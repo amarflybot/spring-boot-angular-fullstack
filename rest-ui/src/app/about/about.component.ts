@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HealthService} from '../service/health.service';
 
 @Component({
@@ -9,12 +9,14 @@ import {HealthService} from '../service/health.service';
 export class AboutComponent implements OnInit {
 
   status: string;
-  constructor(private healthService: HealthService) { }
+
+  constructor(private healthService: HealthService) {
+  }
 
   ngOnInit() {
-    this.healthService.status().subscribe( data => {
+    this.healthService.status().subscribe(data => {
       this.status = data.status;
-    })
+    });
   }
 
 }

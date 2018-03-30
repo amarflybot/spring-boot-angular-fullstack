@@ -8,8 +8,8 @@ export class HealthService {
   constructor(private httpclient: HttpClient) {
   }
 
-  status(): Observable<any>{
-    return this.httpclient.get("/actuator/health");
+  status(): Observable<any> {
+    return this.httpclient.get('/actuator/health');
   }
 
 }
