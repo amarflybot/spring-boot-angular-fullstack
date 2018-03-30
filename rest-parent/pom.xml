@@ -8,6 +8,7 @@
     <artifactId>rest-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>rest-parent</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

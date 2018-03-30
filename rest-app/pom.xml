@@ -4,16 +4,59 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.example</groupId>
-        <artifactId>spring-boot-angular-fullstack</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../rest-parent/pom.xml</relativePath>
-    </parent>
 
     <groupId>com.example</groupId>
     <artifactId>rest-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>${packaging.type}</packaging>
+    <name>rest-app</name>
 
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>rest-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../rest-parent/pom.xml</relativePath>
+    </parent>
+
+    <properties>
+        <packaging.type>jar</packaging.type>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>rest-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>rest-ui</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.example.RestApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <configuration>
+                    <failOnNoGitDirectory>false</failOnNoGitDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

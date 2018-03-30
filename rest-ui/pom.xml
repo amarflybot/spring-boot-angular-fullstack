@@ -4,17 +4,89 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.example</groupId>
-        <artifactId>spring-boot-angular-fullstack</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../rest-parent/pom.xml</relativePath>
-    </parent>
-
     <groupId>com.example</groupId>
     <artifactId>rest-ui</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <packaging>jar</packaging>
+    <name>rest-ui</name>
 
-    
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>rest-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../rest-parent/pom.xml</relativePath>
+    </parent>
+
+    <build>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>3.0.0</version>
+          <executions>
+            <execution>
+              <id>obj-uptodate</id>
+              <goals>
+                <goal>uptodate-property</goal>
+              </goals>
+              <configuration>
+                <name>build.script</name>
+                <value>skip</value>
+                <else>prod</else>
+                <fileSet>
+                  <directory>${project.basedir}/src</directory>
+                  <outputDirectory>${project.basedir}/target/classes/static</outputDirectory>
+                  <includes>
+                    <include>*/**</include>
+                  </includes>
+                  <mapper>
+                    <type>merge</type>
+                    <from>*.*</from>
+                    <to>index.html</to>
+                  </mapper>
+                </fileSet>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>exec-yarn-install</id>
+              <phase>initialize</phase>
+              <configuration>
+                <executable>yarn</executable>
+                <arguments>
+                  <argument>install</argument>
+                  <argument>--production=false</argument>
+                </arguments>
+              </configuration>
+              <goals>
+                <goal>exec</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>exec-npm-build</id>
+              <phase>compile</phase>
+              <configuration>
+                <executable>npm</executable>
+                <arguments>
+                  <argument>run</argument>
+                  <argument>build:${build.script}</argument>
+                  <argument>--</argument>
+                  <argument>--output-path=target/classes/static</argument>
+                </arguments>
+              </configuration>
+              <goals>
+                <goal>exec</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </build>
+
 </project>
