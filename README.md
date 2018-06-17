@@ -23,7 +23,7 @@ To run the server side install maven
 
 # RestUi
 
-The UI part of this project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+The UI part of this project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
 ## Development server
 
