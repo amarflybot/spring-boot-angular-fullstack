@@ -1,4 +1,6 @@
 # FullStack
+[![Build Status](https://travis-ci.org/amarflybot/spring-boot-angular-fullstack.svg?branch=master)](https://travis-ci.org/amarflybot/spring-boot-angular-fullstack)
+
 This Project can be completely build by the following commands:
 
 `mvn clean install`
