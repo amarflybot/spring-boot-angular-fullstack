@@ -10,7 +10,7 @@ This Project can be completely build by the following commands:
     
     Stack:
         Spring Boot
-        Angular 5 with Bootstrap
+        Angular 6 with Bootstrap
 
 The final artifact shall be a jar.
     
