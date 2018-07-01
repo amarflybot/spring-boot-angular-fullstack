@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -jar rest-app/target/rest-app-0.0.1-SNAPSHOT.jar
